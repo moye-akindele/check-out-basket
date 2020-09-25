@@ -1,0 +1,9 @@
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\bin\Debug\netcoreapp3.1\CheckOutBasketData.deps.json
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\bin\Debug\netcoreapp3.1\CheckOutBasketData.dll
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\bin\Debug\netcoreapp3.1\CheckOutBasketData.pdb
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.csprojAssemblyReference.cache
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.AssemblyInfoInputs.cache
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.AssemblyInfo.cs
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.csproj.CoreCompileInputs.cache
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.dll
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasketData\obj\Debug\netcoreapp3.1\CheckOutBasketData.pdb

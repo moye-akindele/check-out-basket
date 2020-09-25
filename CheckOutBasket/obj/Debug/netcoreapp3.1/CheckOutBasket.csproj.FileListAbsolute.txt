@@ -18,3 +18,6 @@ C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\obj\
 C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\obj\Debug\netcoreapp3.1\CheckOutBasket.dll
 C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\obj\Debug\netcoreapp3.1\CheckOutBasket.pdb
 C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\obj\Debug\netcoreapp3.1\CheckOutBasket.genruntimeconfig.cache
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\bin\Debug\netcoreapp3.1\CheckOutBasketData.dll
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\bin\Debug\netcoreapp3.1\CheckOutBasketData.pdb
+C:\Users\Moye\Documents\Repo\CheckOutBasket\check-out-basket\CheckOutBasket\obj\Debug\netcoreapp3.1\CheckOutBasket.csproj.CopyComplete
