@@ -12,7 +12,7 @@ namespace CheckOutBasket.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private static readonly Product[] Products = new[]
         {
@@ -65,7 +65,7 @@ namespace CheckOutBasket.Controllers
             },
         };
 
-        public ProductController()
+        public ProductsController()
         {
 
         }

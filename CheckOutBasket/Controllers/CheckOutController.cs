@@ -82,7 +82,7 @@ namespace CheckOutBasket.Controllers
             new Voucher
             {
                 Id = 2,
-                Name = "£5 off Head Gear",
+                Name = "Head Gear",
                 Type = VoucherType.Offer,
                 DiscountPrice = 5,
                 Condition = "Head Gear in baskets over £50.00",
@@ -91,7 +91,7 @@ namespace CheckOutBasket.Controllers
             new Voucher
             {
                 Id = 3,
-                Name = "£5 off basket",
+                Name = "Basket-50",
                 Type = VoucherType.Gift,
                 DiscountPrice = 5,
                 Condition = "Basket is over £50.00",
@@ -101,12 +101,6 @@ namespace CheckOutBasket.Controllers
         public CheckOutController()
         {
 
-        }
-        // GET: api/<CheckOutController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         public CheckOutResponse Post(CheckOutRequest request)
@@ -118,9 +112,6 @@ namespace CheckOutBasket.Controllers
             {
                 throw new ArgumentException($"Failed to retrieve products.");
             }
-
-            VoucherHandler voucherHandler = new VoucherHandler(retrievedProducts, retrievedVouchers);
-
             // Construct Message
             StringBuilder checkoutMessage = new StringBuilder();
             foreach(Product product in retrievedProducts)
@@ -139,8 +130,13 @@ namespace CheckOutBasket.Controllers
             checkoutMessage.Append("------------------------------------------");
             checkoutMessage.Append(Environment.NewLine);
 
-            var totalPrice = new VoucherHandler(retrievedProducts, retrievedVouchers).ApplyVouchers();
-            checkoutMessage.Append($"Total = £{totalPrice}");
+            double amendedTotalPrice;
+            string voucherMessage;
+
+            VoucherHandler voucherHandler = new VoucherHandler(retrievedProducts, retrievedVouchers);
+            voucherHandler.ApplyVouchers(out amendedTotalPrice, out voucherMessage);
+            checkoutMessage.Append($"Total = £{amendedTotalPrice}");
+            checkoutMessage.Append(voucherMessage);
 
             CheckOutResponse response = new CheckOutResponse()
             {

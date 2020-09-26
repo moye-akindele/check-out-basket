@@ -21,8 +21,9 @@ namespace CheckOutBasketData.Helpers
             GetInitialTotal();
         }
 
-        public double ApplyVouchers()
+        public void ApplyVouchers(out double amendedTotalPrice, out string voucherMessage)
         {
+            voucherMessage = string.Empty;
             AmendedTotalPrice = InitialTotalPrice;
 
             var voucherProductsTotal = Products.Where(p => p.Category == ProductCategory.Voucher).Select(vp => vp.Price).Sum();
@@ -30,9 +31,6 @@ namespace CheckOutBasketData.Helpers
             {
                 AmendedTotalPrice -= voucherProductsTotal;
             }
-
-            
-            //int[] voucherIds = Vouchers.Select(v => v.Id).ToArray();
 
             foreach (Voucher voucher in Vouchers)
             {
@@ -46,6 +44,11 @@ namespace CheckOutBasketData.Helpers
                         break;
                     case 2:
                         var headGearList = Products.Where(p => p.Category == ProductCategory.HeadGear).ToArray();
+
+                        if (headGearList != null || headGearList.Length == 0)
+                        {
+                            voucherMessage += "Message: There are no products in your basket applicable to Head Gear voucher.";
+                        }
 
                         if (InitialTotalPrice > 50 && headGearList != null && headGearList.Length > 0)
                         {
@@ -63,6 +66,12 @@ namespace CheckOutBasketData.Helpers
 
                             AmendedTotalPrice = AmendedTotalPrice > voucherThreeDeductionPrice ? AmendedTotalPrice - voucherThreeDeductionPrice : 0;
                         }
+                        else
+                        {
+                            var remainingCost = 50 - (InitialTotalPrice - voucherProductsTotal);
+                            voucherMessage += $"Message: You have not reached the spend threshold for Basket-50 voucher. Spend another £{remainingCost} to " +
+                                "receive £5.00 discount from your basket total.";
+                        }
                         break;
                     default:
                         break;
@@ -73,7 +82,7 @@ namespace CheckOutBasketData.Helpers
             {
                 AmendedTotalPrice += voucherProductsTotal;
             }
-            return Math.Round(AmendedTotalPrice, 2);
+            amendedTotalPrice = Math.Round(AmendedTotalPrice, 2);
         }
 
         void GetInitialTotal()
