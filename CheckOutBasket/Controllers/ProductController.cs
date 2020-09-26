@@ -61,7 +61,7 @@ namespace CheckOutBasket.Controllers
                 Id = 6,
                 Name = "£30 Gift Voucher",
                 Category = ProductCategory.Voucher,
-                Price = 3.50,
+                Price = 30.00,
             },
         };
 

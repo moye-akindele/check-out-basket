@@ -7,7 +7,7 @@ namespace CheckOutBasketData
         public int Id { get; set; }
         public string Name { get; set; }
         public VoucherType Type { get; set; }
-        public float DiscountPrice { get; set; }
+        public double DiscountPrice { get; set; }
         public string Condition { get; set; }
     }
 }

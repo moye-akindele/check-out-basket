@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CheckOutBasketData;
 using CheckOutBasketData.Enum;
+using CheckOutBasketData.Helpers;
 using CheckOutBasketData.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,7 +64,7 @@ namespace CheckOutBasket.Controllers
                 Id = 6,
                 Name = "£30 Gift Voucher",
                 Category = ProductCategory.Voucher,
-                Price = 3.50,
+                Price = 30.00,
             },
         };
 
@@ -118,6 +119,8 @@ namespace CheckOutBasket.Controllers
                 throw new ArgumentException($"Failed to retrieve products.");
             }
 
+            VoucherHandler voucherHandler = new VoucherHandler(retrievedProducts, retrievedVouchers);
+
             // Construct Message
             StringBuilder checkoutMessage = new StringBuilder();
             foreach(Product product in retrievedProducts)
@@ -136,7 +139,7 @@ namespace CheckOutBasket.Controllers
             checkoutMessage.Append("------------------------------------------");
             checkoutMessage.Append(Environment.NewLine);
 
-            var totalPrice = retrievedProducts.Select(rp => rp.Price).Sum();
+            var totalPrice = new VoucherHandler(retrievedProducts, retrievedVouchers).ApplyVouchers();
             checkoutMessage.Append($"Total = £{totalPrice}");
 
             CheckOutResponse response = new CheckOutResponse()
