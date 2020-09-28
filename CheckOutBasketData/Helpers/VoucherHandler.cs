@@ -17,34 +17,39 @@ namespace CheckOutBasketData.Helpers
         {
             Products = products;
             Vouchers = vouchers;
-            GetInitialTotal();
+
+            // Calculate the total price of products.
+            InitialTotalPrice = Products.Select(rp => rp.Price).Sum();
         }
 
+        // Total basket price cannot go below £0.00 after vouchers have been applied.
         public void ApplyVouchers(out double amendedTotalPrice, out string voucherMessage)
         {
             voucherMessage = string.Empty;
             AmendedTotalPrice = InitialTotalPrice;
 
+            // Exclude the price of voucher products from the total discountable price.
             var voucherProductsTotal = Products.Where(p => p.Category == ProductCategory.Voucher).Select(vp => vp.Price).Sum();
             if (voucherProductsTotal > 0)
             {
                 AmendedTotalPrice -= voucherProductsTotal;
             }
 
+            // Cycle through voucher conditions to know which ones to apply.
             foreach (Voucher voucher in Vouchers)
             {
                 switch (voucher.Id)
                 {
-                    case 1:
+                    case 1: // £5 off total price.
                         var voucherOneDeductionPrice = Vouchers.First(v => v.Id == voucher.Id).DiscountPrice;
 
                         AmendedTotalPrice = AmendedTotalPrice > voucherOneDeductionPrice ? AmendedTotalPrice - voucherOneDeductionPrice : 0;
 
                         break;
-                    case 2:
+                    case 2: // Only applies to head gear in baskets over £50.00.
                         var headGearList = Products.Where(p => p.Category == ProductCategory.HeadGear).ToArray();
 
-                        if (headGearList != null || headGearList.Length == 0)
+                        if (headGearList == null || headGearList.Length == 0)
                         {
                             voucherMessage += "Message: There are no products in your basket applicable to Head Gear voucher.";
                         }
@@ -58,7 +63,7 @@ namespace CheckOutBasketData.Helpers
                             AmendedTotalPrice = AmendedTotalPrice > voucherTwoDeductionPrice ? AmendedTotalPrice - voucherTwoDeductionPrice : 0;
                         }
                         break;
-                    case 3:
+                    case 3: // Applies to baskets over £50.00.
                         if ((InitialTotalPrice - voucherProductsTotal) > 50)
                         {
                             var voucherThreeDeductionPrice = Vouchers.First(v => v.Id == voucher.Id).DiscountPrice;
@@ -77,16 +82,12 @@ namespace CheckOutBasketData.Helpers
                 }
             }
 
+            // Include the price of voucher products that were excluded from the total price before vouchers were applied.
             if (voucherProductsTotal > 0)
             {
                 AmendedTotalPrice += voucherProductsTotal;
             }
             amendedTotalPrice = Math.Round(AmendedTotalPrice, 2);
-        }
-
-        void GetInitialTotal()
-        {
-            InitialTotalPrice = Products.Select(rp => rp.Price).Sum();
         }
     }
 }

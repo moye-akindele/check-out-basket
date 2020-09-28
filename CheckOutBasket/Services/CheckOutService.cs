@@ -46,6 +46,7 @@ namespace CheckOutBasket.Services
             checkoutMessage.Append("------------------------------------------");
             checkoutMessage.Append(Environment.NewLine);
 
+            // Apply vouchers.
             double amendedTotalPrice;
             string voucherMessage;
 
