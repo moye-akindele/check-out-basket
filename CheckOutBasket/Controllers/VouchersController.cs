@@ -23,22 +23,36 @@ namespace CheckOutBasket.Controllers
 
         // GET: api/<VouchersController>
         [HttpGet]
-        public IEnumerable<Voucher> Get()
+        public ActionResult<IEnumerable<Voucher>> Get()
         {
-            return _service.Get();
+            return Ok(_service.Get());
         }
 
         // GET api/<VouchersController>/5
         [HttpGet("{id}")]
-        public Voucher Get(int voucherId)
+        public ActionResult<Voucher> Get(int voucherId)
         {
-            return _service.Get(voucherId);
+            var selectedVoucher = _service.Get(voucherId);
+
+            if (selectedVoucher == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(selectedVoucher);
         }
 
         [HttpGet("GetMultiple")]
-        public IEnumerable<Voucher> GetMultiple(int[] voucherIds)
+        public ActionResult<IEnumerable<Voucher>> GetMultiple(int[] voucherIds)
         {
-            return _service.GetMultiple(voucherIds);
+            var selectedVouchers = _service.GetMultiple(voucherIds);
+
+            if (selectedVouchers == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(selectedVouchers);
         }
     }
 }

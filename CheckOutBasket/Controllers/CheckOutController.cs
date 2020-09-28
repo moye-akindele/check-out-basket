@@ -106,51 +106,10 @@ namespace CheckOutBasket.Controllers
             _checkOutService = checkOutService;
         }
 
-        public CheckOutResponse Post(CheckOutRequest request)
+        public ActionResult<CheckOutResponse> Post(CheckOutRequest request)
         {
             var response = _checkOutService.GetCheckOutResponse(request);
-            return response;
-            //var retrievedProducts = Products.Where(p => request.ProductIds.Contains(p.Id));
-            //var retrievedVouchers = Vouchers.Where(v => request.VoucherIds.Contains(v.Id));
-
-            //if (retrievedProducts == null)
-            //{
-            //    throw new ArgumentException($"Failed to retrieve products.");
-            //}
-            //// Construct Message
-            //StringBuilder checkoutMessage = new StringBuilder();
-            //foreach(Product product in retrievedProducts)
-            //{
-            //    checkoutMessage.Append($"{product.Name} @ £{product.Price}");
-            //    checkoutMessage.Append(Environment.NewLine);
-            //}
-            //checkoutMessage.Append("------------------------------------------");
-            //checkoutMessage.Append(Environment.NewLine);
-
-            //foreach (Voucher voucher in retrievedVouchers)
-            //{
-            //    checkoutMessage.Append($"{voucher.Name} @ £{voucher.Type} applied");
-            //    checkoutMessage.Append(Environment.NewLine);
-            //}
-            //checkoutMessage.Append("------------------------------------------");
-            //checkoutMessage.Append(Environment.NewLine);
-
-            //double amendedTotalPrice;
-            //string voucherMessage;
-
-            //VoucherHandler voucherHandler = new VoucherHandler(retrievedProducts, retrievedVouchers);
-            //voucherHandler.ApplyVouchers(out amendedTotalPrice, out voucherMessage);
-            //checkoutMessage.Append($"Total = £{amendedTotalPrice}");
-            //checkoutMessage.Append(voucherMessage);
-
-            //CheckOutResponse response = new CheckOutResponse()
-            //{
-            //    Messages = checkoutMessage.ToString(),
-            //    RetrievedProducts = retrievedProducts,
-            //    RetrievedVouchers = retrievedVouchers
-            //};
-
-            //return response;
+            return Ok(response);
         }
     }
 }

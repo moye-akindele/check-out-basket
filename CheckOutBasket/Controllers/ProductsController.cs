@@ -24,22 +24,36 @@ namespace CheckOutBasket.Controllers
 
         // GET: api/<ProductController>
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public ActionResult<IEnumerable<Product>> Get()
         {
-            return _service.Get();
+            return Ok(_service.Get());
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public ActionResult<Product> Get(int id)
         {
-            return _service.Get(id);
+            var selectedProduct = _service.Get(id);
+
+            if (selectedProduct == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(selectedProduct);
         }
 
         [HttpGet("GetMultiple")]
-        public IEnumerable<Product> GetMultiple(int[] productIds)
+        public ActionResult<IEnumerable<Product>> GetMultiple(int[] productIds)
         {
-            return _service.GetMultiple(productIds);
+            var selectedProducts = _service.GetMultiple(productIds);
+
+            if (selectedProducts == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(selectedProducts);
         }
     }
 }
