@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CheckOutBasketData.Enum
+﻿namespace CheckOutBasketData.Enum
 {
     public enum ProductCategory
     {

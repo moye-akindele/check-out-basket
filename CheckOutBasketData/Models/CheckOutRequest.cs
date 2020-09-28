@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CheckOutBasketData.Models
+﻿namespace CheckOutBasketData.Models
 {
     public class CheckOutRequest
     {

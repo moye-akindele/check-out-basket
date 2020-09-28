@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CheckOutBasket.ServiceInterfaces;
-using CheckOutBasketData;
-using CheckOutBasketData.Enum;
-using CheckOutBasketData.Helpers;
+﻿using CheckOutBasket.ServiceInterfaces;
 using CheckOutBasketData.Models;
 using Microsoft.AspNetCore.Mvc;
 

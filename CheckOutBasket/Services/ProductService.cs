@@ -1,10 +1,7 @@
 ﻿using CheckOutBasket.ServiceInterfaces;
 using CheckOutBasketData.Models;
 using CheckOutBasketData.RepositoryInterfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CheckOutBasket.Services
 {

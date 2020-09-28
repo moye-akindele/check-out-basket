@@ -3,11 +3,7 @@ using CheckOutBasket.ServiceInterfaces;
 using CheckOutBasketData.Models;
 using CheckOutBasketTests.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace CheckOutBasketTests.Controllers

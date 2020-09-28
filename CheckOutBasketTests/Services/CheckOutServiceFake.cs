@@ -3,7 +3,6 @@ using CheckOutBasketData;
 using CheckOutBasketData.Helpers;
 using CheckOutBasketData.Models;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace CheckOutBasketTests.Services

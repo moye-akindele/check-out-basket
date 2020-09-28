@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CheckOutBasketData
+﻿namespace CheckOutBasketData
 {
     public class Voucher
     {
